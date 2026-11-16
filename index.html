@@ -709,7 +709,7 @@ function priceHTML(p, i) {
   const v = p.variantes[sel[i]][1];
   return v != null ? `<div class="price"><small>USD</small><b>${fmt(v)}</b></div>` : `<div class="price ask"><b>Consultar</b></div>`;
 }
-function msgFor(p, i) { const v = p.variantes[sel[i]][0]; return `Hola Bushido! Me interesa el ${p.marca} ${p.modelo}${v ? " " + v : ""}. ¿Me pasás info?`; }
+function msgFor(p, i) { const v = p.variantes[sel[i]][0]; return `Hola Kevin! Me interesa el ${p.marca} ${p.modelo}${v ? " " + v : ""}. ¿Me pasás info?`; }
 function cardHTML(p, i, d) {
   return `<article class="card" data-i="${i}" style="--d:${Math.min(d, 14)}">
     <button class="ph" data-open="${i}" aria-label="Ver ${esc(p.modelo)}">${media(p)}
@@ -790,7 +790,7 @@ function syncPedido(bump) {
 }
 function renderCart() {
   const it = items(), tot = it.reduce((a, x) => a + x.n * x.v[1], 0);
-  const msg = "Hola Bushido! Quiero hacer este pedido:\n\n" + it.map(x => `• ${x.n} × ${x.p.marca} ${x.p.modelo}${x.v[0] ? " " + x.v[0] : ""} — USD ${fmt(x.v[1] * x.n)}`).join("\n") + `\n\nTotal: USD ${fmt(tot)}`;
+  const msg = "Hola Kevin! Quiero hacer este pedido:\n\n" + it.map(x => `• ${x.n} × ${x.p.marca} ${x.p.modelo}${x.v[0] ? " " + x.v[0] : ""} — USD ${fmt(x.v[1] * x.n)}`).join("\n") + `\n\nTotal: USD ${fmt(tot)}`;
   $("cart").innerHTML = `
     <div class="p-head"><div><small>ご注文</small><h3>Tu pedido</h3></div><button class="x" data-close aria-label="Cerrar">×</button></div>
     ${it.length ? `<div class="c-list">${it.map(x => `<div class="c-it">
@@ -962,7 +962,7 @@ function setProductos(list) {
   $("f-prod").textContent = PRODUCTOS.length; $("f-marcas").textContent = new Set(PRODUCTOS.map(p => p.marca)).size;
   refresh(false); buildShowcase(); syncPedido();
 }
-const general = waLink("Hola Bushido! Quería hacer una consulta.");
+const general = waLink("Hola Kevin! Quería hacer una consulta.");
 $("fab").href = general; $("hero-wa").href = general; $("foot-wa").href = general;
 setProductos(PRODUCTOS); $("grid").classList.add("in");
 drawRidge(); petals(); fromHash();
